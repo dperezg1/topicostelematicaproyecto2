@@ -12,21 +12,13 @@ module.exports = {
     res.send('Logout exitoso');
   }
   ,
-  postLogin : function (req,res,next) {
-    passport.authenticate('local',function (err,user,info) {
-      if(err){
-        next(err);
-      }
-      if(!user){
-        return res.status(400).send('Usuario o contraseña no validos');
-      }
-      req.logIn(user,function (err) {
-        if(err){
-          next(err);
-        }
-        res.send('Login exitoso');
-      })
-    })(req,res,next);
+  login : function (req,res,next) {
+    passport.authenticate('google',{ scope:
+  	[ 'https://www.googleapis.com/auth/plus.me']}
+  },
+  googleCallback: function(req,res){
+    res.redirect('/');
+
   }
   ,
   postSignup : function(req,res,next){
