@@ -12,10 +12,6 @@ module.exports = {
     res.send('Logout exitoso');
   }
   ,
-  login : function (req,res,next) {
-    passport.authenticate('google',{ scope:
-  	[ 'https://www.googleapis.com/auth/plus.me']}
-  },
   googleCallback: function(req,res){
     res.redirect('/');
 

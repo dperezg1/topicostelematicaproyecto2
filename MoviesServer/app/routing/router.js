@@ -2,6 +2,7 @@ var express = require('express'),
   router = express.Router(),
   users = require('../controllers/user'),
   movies = require('../controllers/movie'),
+  passport = require('passport'),
   passportConfig = require ('../../config/passport');
 
 module.exports = function(app) {
@@ -14,7 +15,7 @@ router.post('/updateUsername',passportConfig.estaAutenticado, users.updateUserna
 router.post('/updatePassword',passportConfig.estaAutenticado, users.updatePassword);
 
 router.post('/signup',users.postSignup);
-router.post('/login',users.postLogin);
+router.get('/login',passport.authenticate('google',{ scope: [ 'https://www.googleapis.com/auth/plus.me']}));
 router.get('/logout',passportConfig.estaAutenticado, users.logout);
 router.get('/userInfo', passportConfig.estaAutenticado, function (req,res) {
   res.json({username: req.user.username, _id: req.user._id});
