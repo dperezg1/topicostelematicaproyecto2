@@ -6,11 +6,11 @@ By:
 	Daniela Serna Escobar - dsernae@eafit.edu.co
 	Diego Alejandro Pérez Gutierrez - dperezg1@eafit.edu.co
 
-# DescripciÃ³n de aplicaciÃ³n
+# Descripción de aplicación
 
-AplicaciÃ³n web que permite gestionar Peliculas, un CRUD bÃ¡sico de metadatos de video (titulo, director, aÃ±o, genero, tamaÃ±o, y url de la imagen de la pelicula).
+Aplicación web que permite gestionar Peliculas, un CRUD básico de videos (titulo, director, año, genero, tamaño, url de la imagen de la pelicula y video en formato mp4).
 
-# 1. AnÃ¡lisis
+# 1. Análisis
 
 ## 1.1 Requisitos funcionales:
 
@@ -27,13 +27,13 @@ Peliculas:
 Usuario:
 
 1. Crear usuario.
-2. Cambiar usuario o contraseÃ±a.
+2. Cambiar usuario o contraseña.
 3. Borrar usuario.
-4. Buscar por nombre de usuario para compartir contraseÃ±as.
+4. Buscar por nombre de usuario para compartir contraseñas.
 
-## 1.2 DefiniciÃ³n de tecnologÃ­a de desarrollo y despliegue para la aplicaciÃ³n:
+## 1.2 Definición de tecnología de desarrollo y despliegue para la aplicación:
 
-* Lenguaje de ProgramaciÃ³n: Javascript
+* Lenguaje de Programación: Javascript
 * Framework web backend: NodeJS - Express
 * Framework web frontend: Angular 2 js
 * Base de datos: MongoDB
@@ -42,14 +42,14 @@ Usuario:
 
 # 2. Desarrollo
 
-Se generÃ³ la base del servidor en node, con Yeoman:
+Se generó la base del servidor en node, con Yeoman:
 
   $ yo express
 
 Luego se genero la base del front end de angular 2 con el comando:
   $ ng new MovieD
 
-# 3. DiseÃ±o:
+# 3. Diseño:
 
 ## 3.1 Modelo de datos:
 
@@ -76,7 +76,7 @@ Luego se genero la base del front end de angular 2 con el comando:
 ### Peliculas
 
   /* Servicio Web: Crear Pelicula
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /movie
     Body:
@@ -93,13 +93,13 @@ Luego se genero la base del front end de angular 2 con el comando:
    }
   */
   /* Servicio Web: Listar todas las peliculas publicas
-    MÃ©todo: GET
+    Método: GET
     Autenticado: NO
     URI: /movie
   */
   
   /* Servicio Web: Buscar pelicula publica por titulo
-    MÃ©todo: POST
+    Método: POST
     Autenticado: NO
     URI: /searchMovie
     Body:
@@ -109,7 +109,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
   
   /* Servicio Web: Listar todas las peliculas privadas
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /myContent
     Body:
@@ -119,7 +119,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
   
   /* Servicio Web: Listar las peliculas compartidas con el usuario.
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /sharedWithMe
     Body:
@@ -129,7 +129,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
   
   /* Servicio Web: Actualizar pelicula
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /update
     Body:
@@ -147,7 +147,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
   
   /* Servicio Web: Borrar cancion por Id
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /deleteMovie
     Body:
@@ -157,7 +157,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */  
 
   /* Servicio Web: Listar peliculas por genero
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /movieGenre
     Body:
@@ -167,7 +167,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */  
 
   /* Servicio Web: Listar peliculas por genero
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /shareMovie
     Body:
@@ -181,7 +181,7 @@ Luego se genero la base del front end de angular 2 con el comando:
 ### Usuarios
 
   /* Servicio Web: Crear usuario
-    MÃ©todo: POST
+    Método: POST
     Autenticado: NO
     URI: /signup
     Body: 
@@ -192,7 +192,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
 
   /* Servicio Web: Ingresar a la plataforma con un usuario
-    MÃ©todo: POST
+    Método: POST
     Autenticado: NO
     URI: /login
     Body: 
@@ -203,7 +203,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
 
   /* Servicio Web: Actualizar usuario
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /updateUsername
     Body: 
@@ -213,8 +213,8 @@ Luego se genero la base del front end de angular 2 con el comando:
     }
   */
 
-  /* Servicio Web: Actualizar contraseÃ±a de usuario.
-    MÃ©todo: POST
+  /* Servicio Web: Actualizar contraseña de usuario.
+    Método: POST
     Autenticado: SI
     URI: /updatePassword
     Body: 
@@ -225,7 +225,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
   
   /* Servicio Web: Borrar usuario
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /deleteUser
     {
@@ -234,7 +234,7 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
 
   /* Servicio Web: buscar usuario
-    MÃ©todo: POST
+    Método: POST
     Autenticado: SI
     URI: /searchUser
     {
@@ -243,13 +243,13 @@ Luego se genero la base del front end de angular 2 con el comando:
   */
 
   /* Servicio Web: logout usuario
-    MÃ©todo: GET
+    Método: GET
     Autenticado: SI
     URI: /logout
   */
 
   /* Servicio Web: traer informaciÃ³n de sesiÃ³n de usuario.
-    MÃ©todo: GET
+    Método: GET
     Autenticado: SI
     URI: /userInfo
   */
@@ -288,7 +288,7 @@ Abrir el puerto 80
       user1$ sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
       user1$ sudo firewall-cmd --reload
 
-## 4.5 Abrir los puertos en el firewall que utilizara la app:
+## 4.5 Abrir los puertos en el firewall que utilizará la app:
 
       user1$ firewall-cmd --zone=public --add-port=5000/tcp --permanent
       user1$ firewall-cmd --reload
@@ -313,7 +313,7 @@ Deshabilitar SELINUX
 
           user1$ sudo reboot      
 
-### 4.7 ConfiguraciÃ³n del proxy inverso en NGINX para cada aplicaciÃ³n:
+### 4.7 Configuración del proxy inverso en NGINX para cada aplicaión:
 
       // /etc/nginx/nginx.config
       .
@@ -321,24 +321,12 @@ Deshabilitar SELINUX
       server {
         listen       80 default_server;
         listen       [::]:80 default_server;
-        server_name  10.131.137.219;
+        server_name  10.131.137.219:8081;
         root         /usr/share/nginx/html;
       .
       .
+
       location / {
-        root /usr/share/nginx/html;
-        index index.html index.htm;
-      }
-
-      location /dhoyoso/ {
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header HOST $http_host;
-        proxy_set_header X-NginX-Proxy true;
-        proxy_pass http://127.0.0.1:5000/;
-        proxy_redirect off;
-      }
-
-      location /dhoyoso/ {
         if ($request_method = 'OPTIONS') {
         add_header 'Access-Control-Allow-Origin' '*';
         add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
@@ -366,8 +354,8 @@ Deshabilitar SELINUX
         add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
         add_header 'Access-Control-Expose-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
       }
-         alias /home/dhoyoso/dev/topicostelematicap1-2/MovieD/dist/;
-         try_files $uri$args $uri$args/ /dhoyoso/index.html;
+        alias /home/user1/topicostelematicap1-2/MovieD/dist/;
+        try_files $uri$args $uri$args/ /index.html;
         }
 
       .
