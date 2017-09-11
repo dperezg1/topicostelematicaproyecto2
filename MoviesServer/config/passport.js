@@ -2,7 +2,7 @@
  * Created by USER on 02/08/2017.
  */
 var passport = require ('passport');
-var Strategy = require('passport-google-oauth20').Strategy;
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var Usuario = require ('../app/models/user');
 
 passport.serializeUser(function(usuario,done){
