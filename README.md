@@ -2,8 +2,11 @@
 
 By: 	
 	Daniel Hoyos Ospina - dhoyoso@eafit.edu.co
+    
 	Edwin Montoya Jaramillo - emonto15@eafit.edu.co
+    
 	Daniela Serna Escobar - dsernae@eafit.edu.co
+    
 	Diego Alejandro Pérez Gutierrez - dperezg1@eafit.edu.co
 
 # Descripción de aplicación
