@@ -15,7 +15,8 @@ router.post('/updateUsername',passportConfig.estaAutenticado, users.updateUserna
 router.post('/updatePassword',passportConfig.estaAutenticado, users.updatePassword);
 
 router.post('/signup',users.postSignup);
-router.get('/login',passport.authenticate('google',{ scope: [ 'https://www.googleapis.com/auth/plus.me']}));
+router.get('/login',passport.authenticate('google',{ scope: ['profile']}));
+router.get('/login/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),users.googleCallback);
 router.get('/logout',passportConfig.estaAutenticado, users.logout);
 router.get('/userInfo', passportConfig.estaAutenticado, function (req,res) {
   res.json({username: req.user.username, _id: req.user._id});
@@ -32,5 +33,3 @@ router.post('/shareMovie',passportConfig.estaAutenticado, movies.shareMovieWith)
 router.post('/update',passportConfig.estaAutenticado, movies.updateMovie);
 router.post('/upload',movies.upload);
 router.get('/video',movies.stream);
-
-
