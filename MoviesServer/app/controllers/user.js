@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 module.exports = {
   logout : function (req,res) {
     req.logout();
-    res.send('Logout exitoso');
+    res.send('Logout exitoso!');
   }
   ,
   googleCallback: function(req,res){
