@@ -18,7 +18,7 @@ passport.deserializeUser(function (id,done) {
 passport.use(new GoogleStrategy({
     clientID:  "894365078349-b282nb278osvhnktku33s3ovrm247jks.apps.googleusercontent.com",
     clientSecret: "K9WosmWdumb90PyjFKKaWa2b",
-    callbackURL: 'https://proyecto17api.dis.eafit.edu.co/login/google/callback'
+    callbackURL: 'http://proyecto17api.dis.eafit.edu.co/login/google/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
     process.nextTick(function(){
