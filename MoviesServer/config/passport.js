@@ -44,7 +44,6 @@ passport.use(new GoogleStrategy({
         }
       });
     });
-    return cb(null, profile);
 }));
 
 exports.estaAutenticado = function (req,res,next) {
