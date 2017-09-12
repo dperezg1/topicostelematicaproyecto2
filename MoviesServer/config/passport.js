@@ -25,9 +25,9 @@ passport.use(new GoogleStrategy({
       Usuario.findOne({'google.id': profile.id}, function(err, user){
         console.log(user,"google")
         if(err)
-          return done(err);
+          return cb(err);
         if(user)
-          return done(null, user);
+          return cb(null, user);
         else {
           var newUser = new Usuario();
           newUser.username = profile.emails[0].value;
@@ -39,7 +39,7 @@ passport.use(new GoogleStrategy({
           newUser.save(function(err){
             if(err)
               throw err;
-            return done(null, newUser);
+            return cb(null, newUser);
           })
         }
       });
