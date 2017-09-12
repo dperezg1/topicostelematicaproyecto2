@@ -7,31 +7,26 @@ var mongoose = require('mongoose'),
   passport = require('passport');
 
 module.exports = {
-  logout : function (req,res) {
+  logout: function (req, res) {
     req.logout();
     res.send('Logout exitoso!');
   }
   ,
-  googleCallback: function(req,res){
-    res.redirect('/');
-
-  }
-  ,
-  postSignup : function(req,res,next){
-  var user = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
-    User.findOne({username: req.body.username},function (err,usuarioExistente) {
-      if(usuarioExistente){
+  postSignup: function (req, res, next) {
+    var user = new User({
+      username: req.body.username,
+      password: req.body.password
+    });
+    User.findOne({username: req.body.username}, function (err, usuarioExistente) {
+      if (usuarioExistente) {
         return res.status(400).send('Este username ya esta registrado');
       }
       user.save(function (err) {
-        if(err){
+        if (err) {
           next(err);
         }
-        req.logIn(user,function (err) {
-          if(err){
+        req.logIn(user, function (err) {
+          if (err) {
             next(err);
           }
           res.send('Usuario creado exitosamente');
@@ -56,39 +51,39 @@ module.exports = {
       }
     });
   },
-  searchUser: function (req,res) {
-    User.findOne({username:req.body.searchTerm},function(err,user){
-      if(!err && user) {
-        var searchedUser ={
+  searchUser: function (req, res) {
+    User.findOne({username: req.body.searchTerm}, function (err, user) {
+      if (!err && user) {
+        var searchedUser = {
           "username": user.username,
           "_id": user._id
         };
         return res.status(200).send(searchedUser)
-      }else{
+      } else {
         return res.status(200).send("hay error");
       }
     })
   },
-  updateUsername:function (req,res) {
-    User.findByIdAndUpdate(req.body._id,{
-        "username":req.body.username,
+  updateUsername: function (req, res) {
+    User.findByIdAndUpdate(req.body._id, {
+        "username": req.body.username,
       }
-      ,function (err) {
-        if(err){
+      , function (err) {
+        if (err) {
           res.send(err).status(500);
-        }else{
+        } else {
           res.send("actualizado exitosamente").status(200);
         }
       })
   },
-  updatePassword:function (req,res) {
-    User.findByIdAndUpdate(req.body._id,{
-        "password":req.body.password,
+  updatePassword: function (req, res) {
+    User.findByIdAndUpdate(req.body._id, {
+        "password": req.body.password,
       }
-      ,function (err) {
-        if(err){
+      , function (err) {
+        if (err) {
           res.send(err).status(500);
-        }else{
+        } else {
           res.send("actualizado exitosamente").status(200);
         }
       })

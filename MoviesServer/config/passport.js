@@ -6,7 +6,7 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var Usuario = require ('../app/models/user');
 
 passport.serializeUser(function(usuario,done){
-  done(null,usuario._id);
+  done(null,usuario.id);
 })
 
 passport.deserializeUser(function (id,done) {
@@ -16,15 +16,32 @@ passport.deserializeUser(function (id,done) {
 })
 passport.use(new GoogleStrategy({
     clientID:  "894365078349-b282nb278osvhnktku33s3ovrm247jks.apps.googleusercontent.com",
-    clientSecret: " K9WosmWdumb90PyjFKKaWa2b ",
+    clientSecret: "K9WosmWdumb90PyjFKKaWa2b",
     callbackURL: 'https://proyecto17api.dis.eafit.edu.co/login/google/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
-    // In this example, the user's Facebook profile is supplied as the user
-    // record.  In a production-quality application, the Facebook profile should
-    // be associated with a user record in the application's database, which
-    // allows for account linking and authentication with other identity
-    // providers.
+    process.nextTick(function(){
+      Usuario.findOne({'google.id': profile.id}, function(err, user){
+        if(err)
+          return done(err);
+        if(user)
+          return done(null, user);
+        else {
+          var newUser = new Usuario();
+          newUser.username = profile.emails[0].value;
+          newUser.google.id = profile.id;
+          newUser.google.token = accessToken;
+          newUser.google.name = profile.displayName;
+          newUser.google.email = profile.emails[0].value;
+
+          newUser.save(function(err){
+            if(err)
+              throw err;
+            return done(null, newUser);
+          })
+        }
+      });
+    });
     return cb(null, profile);
 }));
 

@@ -15,8 +15,8 @@ router.post('/updateUsername',passportConfig.estaAutenticado, users.updateUserna
 router.post('/updatePassword',passportConfig.estaAutenticado, users.updatePassword);
 
 router.post('/signup',users.postSignup);
-router.get('/login',passport.authenticate('google',{ scope: ['profile']}));
-router.get('/login/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),users.googleCallback);
+router.get('/login',passport.authenticate('google',{ scope: ['profile','email']}));
+router.get('/login/google/callback', passport.authenticate('google', { successRedirect: 'https://proyecto17.dis.eafit.edu.co',failureRedirect: 'https://proyecto17.dis.eafit.edu.co'}));
 router.get('/logout',passportConfig.estaAutenticado, users.logout);
 router.get('/userInfo', passportConfig.estaAutenticado, function (req,res) {
   res.json({username: req.user.username, _id: req.user._id});
