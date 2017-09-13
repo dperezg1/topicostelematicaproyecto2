@@ -25,7 +25,7 @@ models.forEach(function (model) {
 });
 
 var originsWhitelist = [
-  'https://proyecto17.dis.eafit.edu.co'    //this is my front-end url for development
+  'http://proyecto17.dis.eafit.edu.co'    //this is my front-end url for development
 
 ];
 
@@ -41,7 +41,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(function (req,res,next) {
-  res.header("Access-Control-Allow-Origin", "https://proyecto17.dis.eafit.edu.co");
+  res.header("Access-Control-Allow-Origin", "http://proyecto17.dis.eafit.edu.co");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Credentials","true");
   next();
