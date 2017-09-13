@@ -37,8 +37,8 @@ frontend http *:80
         .
         .
         .
-        acl host_proyecto17 hdr(host) -i proyecto17.dis.eafit.edu.co
-        acl host_apiProyecto17 hdr(host) -i proyecto17api.dis.eafit.edu.co
+        acl host_proyecto17n hdr(host) -i proyecto17.dis.eafit.edu.co
+        acl host_apiProyecto17n hdr(host) -i proyecto17api.dis.eafit.edu.co
         .
         .
         .
@@ -50,6 +50,11 @@ frontend http *:80
         .
         use_backend proyecto17_cluster if host_proyecto17
         use_backend apiProyecto17_cluster if host_apiProyecto17
+        .
+        .
+        .
+        use_backend proyecto17_cluster if host_proyecto17n
+        use_backend apiProyecto17_cluster if host_apiProyecto17n
         .
         .
         .
