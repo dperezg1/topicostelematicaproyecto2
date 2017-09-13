@@ -10,7 +10,7 @@ import { Movie } from '../models/Movie';
 @Injectable()
 export class MovieService {
     private headers = new Headers({"Content-Type": "application/json"});
-    private movieUrl = 'http://10.131.137.219/server';
+    private movieUrl = 'http://proyecto17api.dis.eafit.edu.co';
 
   constructor(private http: Http) {
     }

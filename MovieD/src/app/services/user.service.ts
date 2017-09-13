@@ -16,7 +16,7 @@ export class UserService {
   private passheaders = new Headers({"Content-Type": "application/x-www-form-urlencoded"});
 
 
-  private userUrl = 'http://10.131.137.219/server';
+  private userUrl = 'http://proyecto17api.dis.eafit.edu.co';
 
   constructor(private http: Http) {
   }
@@ -52,18 +52,14 @@ export class UserService {
   }
 
 
-  loginUser(username: string, password: string):Promise<any>
+  loginUser():Promise<any>
   {
-    let url= this.userUrl+"/login";
-    let data= new URLSearchParams();
-    data.append('username', username);
-    data.append('password', password);
-    return this.http.post(url,data,{ headers: this.passheaders, withCredentials:true})
+        let url= this.userUrl+"/login";
+    return this.http.get(url,{ headers: this.passheaders, withCredentials:true})
       .toPromise()
       .then(res=> res as any, res=> res as any)
       .catch(this.handleError)
   }
-
 
   deleteUser(username: string): Promise<any>{
     console.log(username);

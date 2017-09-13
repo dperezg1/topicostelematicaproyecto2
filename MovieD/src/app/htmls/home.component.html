@@ -45,7 +45,7 @@
                 <button type="submit" (click)="search(searchTerm.value)" class="btn btn-primary nav-item navbuttons">Submit</button>
               </li>
               <li>
-                <button id="loginButton" class="btn btn-success nav-item navbuttons" data-target="#loginModal" data-toggle="modal" >Log In</button>
+                <a href="http://proyecto17api.dis.eafit.edu.co/login" id="loginButton" class="btn btn-success nav-item navbuttons">Log In</a>
               </li>
             </ul>
           </div>
@@ -77,7 +77,7 @@
                         <p class="tagline card-text text-xs-center">Director: {{movie1.director}}</p>
                         <p class="tagline card-text text-xs-center">Year: {{movie1.year}}</p>
                         <p class="tagline card-text text-xs-center">Size: {{movie1.size}}</p>
-                        <a class="btn btn-primary btn-block text-white" href="http://10.131.137.219/server/video?filename={{movie1.filename}}" target="_blank"  ><i class="fa fa-eye"></i> Watch Now</a>
+                        <a class="btn btn-primary btn-block text-white" href="http://proyecto17api.dis.eafit.edu.co/video?filename={{movie1.filename}}" target="_blank"  ><i class="fa fa-eye"></i> Watch Now</a>
                         <a *ngIf="myContents" data-toggle="modal" data-target="#editModal"  (click)="getMovieToEdit(movie1,movie1.genre)"  class="btn btn-success btn-block text-white"><i class="fa fa-pencil "></i> Edit</a>
                         <a *ngIf="myContents" (click)="saveMovieToDeleteAndOpenConfirmModal(movie1)" class="btn btn-danger btn-block text-white"><i class="fa fa-trash "></i> Trash</a>
                         <div *ngIf="myContents" class="searchshare">
@@ -108,7 +108,7 @@
                 <p class="tagline card-text text-xs-center">Director: {{movie2.director}}</p>
                 <p class="tagline card-text text-xs-center">Year: {{movie2.year}}</p>
                 <p class="tagline card-text text-xs-center">Size: {{movie2.size}}</p>
-                <a class="btn btn-primary btn-block text-white" href="http://10.131.137.219/server/video?filename={{movie2.filename}}" target="_blank"  ><i class="fa fa-eye"></i> Watch Now</a>
+                <a class="btn btn-primary btn-block text-white" href="http://proyecto17api.dis.eafit.edu.co/video?filename={{movie2.filename}}" target="_blank"  ><i class="fa fa-eye"></i> Watch Now</a>
                 <a *ngIf="myContents" data-toggle="modal" data-target="#editModal"  (click)="getMovieToEdit(movie2,movie2.genre)"  class="btn btn-success btn-block text-white"><i class="fa fa-pencil "></i> Edit</a>
                 <a *ngIf="myContents" (click)="saveMovieToDeleteAndOpenConfirmModal(movie2)" class="btn btn-danger btn-block text-white"><i class="fa fa-trash "></i> Trash</a>
                 <div *ngIf="myContents" class="searchshare">

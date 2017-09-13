@@ -13,7 +13,7 @@ import {FileUploader} from "ng2-file-upload";
 })
 
 export class HomeComponent implements  OnInit {
-  public uploader:FileUploader = new FileUploader({url:'http://10.131.137.219/server/upload',itemAlias:"userFile"});
+  public uploader:FileUploader = new FileUploader({url:'http://proyecto17api.dis.eafit.edu.co/upload',itemAlias:"userFile"});
   private searcherFlag:boolean;
   private movieToDelete:Movie;
   @Input() public editingid:string;
@@ -153,26 +153,9 @@ export class HomeComponent implements  OnInit {
     }
   }
 
-  login(username:string, passw:string): void {
-
-    this.userService.loginUser(username,passw)
-      .then(res => {
-        console.log(res);
-        if(res._body.toString().indexOf("exitoso")!=-1){
-          document.getElementById("closeLoginModal").click();
-          document.getElementById("loginErrorMsg").className="alert alert-error hide";
-          document.getElementById("loginButton").textContent="Log Out";
-          document.getElementById("loginButton").addEventListener('click', (event =>{
-            this.logout();
-          }));
-            this.isLogged=true;
-
-          document.getElementById("loginModal").id = "loguedInModal";
-
-        }else{
-          document.getElementById("loginErrorMsg").className="alert alert-error";
-        }
-      });
+  login(): void {
+    this.userService.loginUser()
+      .then();
   }
 
   logout():void{
@@ -183,19 +166,18 @@ export class HomeComponent implements  OnInit {
       document.getElementById("upload").setAttribute('data-target',"");
       this.isLogged=false;
     }
-    document.getElementById("loginButton").addEventListener('click', (event =>{
-      this.changeLoginModalId();
-    }));
+ //   document.getElementById("loginButton").setAttribute('href',"http://proyecto17api.dis.eafit.edu.co/login");
   }
 
   loguedUser():void{
     document.getElementById("closeLoginModal").click();
     document.getElementById("loginErrorMsg").className="alert alert-error hide";
     document.getElementById("loginButton").textContent="Log Out";
+    document.getElementById("loginButton").setAttribute('href',"");
     document.getElementById("loginButton").addEventListener('click', (event =>{
       this.logout();
     }));
-      this.isLogged=true;
+    this.isLogged=true;
     document.getElementById("loginModal").id = "loguedInModal";
   }
 
@@ -212,7 +194,7 @@ export class HomeComponent implements  OnInit {
           console.log(res);
           if (res._body.toString().indexOf("exitosamente") != -1) {
            document.getElementById("registerModalCloser").click();
-            this.login(username, passw);
+            this.login();
           }else{
             document.getElementById("loginErrorMsg1").className = 'alert alert-error';
             document.getElementById("loginErrorMsg1").textContent=res._body.toString();
