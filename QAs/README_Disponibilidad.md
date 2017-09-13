@@ -7,7 +7,7 @@
       http://www.haproxy.org/
 
 Arquitectura base:
-![](vista-arquitectura.jpg)
+![](vista-arquitectura.png)
 Este LB (HAPROXY), puede tener las siguientes funcionalidades:
 
 * Proxy inverso (permite que un browser en Internet público, pueda ingresar a los servidores AppServer).
