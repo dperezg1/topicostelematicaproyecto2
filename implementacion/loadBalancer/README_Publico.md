@@ -22,8 +22,18 @@ frontend https
     .
     .
 ```
-2. Establecer los hosts a los que se redireccionará las URLs:
+2. Establecer los hosts a los que se redireccionará las URLs tanto en http como en https:
 ```
+frontend https
+        .
+        .
+        .
+        acl host_proyecto17 hdr(host) -i proyecto17.dis.eafit.edu.co
+        acl host_apiProyecto17 hdr(host) -i proyecto17api.dis.eafit.edu.co
+        .
+        .
+        .
+frontend http *:80
         .
         .
         .
